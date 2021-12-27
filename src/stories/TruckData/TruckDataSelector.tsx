@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-
+import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Collapse from '@material-ui/core/Collapse';
@@ -29,7 +29,14 @@ interface TruckDataSelectorProps {
     data:[]
 }
 
-
+const useStyles = makeStyles({
+    root: {
+      width: '100%',
+    },
+    container: {
+      maxHeight: '85vh',
+    },
+  });
 const useRowStyles = makeStyles({
     root: {
         '& > *': {
@@ -99,6 +106,7 @@ export const TruckDataRow = (o) => {
 const TruckDataSelector = (props:TruckDataSelectorProps) => {
 
   
+    const classes = useStyles();
     
     const [selectedDate,setSelectedDate] = useState<string>( makeTime(new Date())); 
 
@@ -138,16 +146,21 @@ const TruckDataSelector = (props:TruckDataSelectorProps) => {
                 Truck Window Data
                 </Grid>
           
-          <Grid item>
-              <AutoComplete
-                   id='location-selector'
-                    options={keys}
-                    renderInput={(params)=><TextField {...params} label='Select Location'/>}
-                    onChange={(e,v)=>setSelectedLocation(v)}
+         <Grid container  direction='row'>
 
-                />
-          </Grid>
-                <Grid item>
+            <Grid item xs={4}>
+                <AutoComplete
+                    id='location-selector'
+                    fullWidth
+                        options={keys}
+                        renderInput={(params)=><TextField {...params} label='Select Location'/>}
+                        onChange={(e,v)=>setSelectedLocation(v)}
+
+                    /> 
+            </Grid>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={4}>
+
                     <TextField
                         label='Date'
                         type='datetime-local'
@@ -157,9 +170,15 @@ const TruckDataSelector = (props:TruckDataSelectorProps) => {
                             shrink: true,
                           }}
                         />
-                </Grid>
+               </Grid>
+             
+
+          </Grid>
+
                 <Grid item>
-                  <Table>
+                    <TableContainer className={classes.container}>
+
+                  <Table stickyHeader>
                      
                       <TableHead>
                                     <TableRow>
@@ -193,6 +212,8 @@ const TruckDataSelector = (props:TruckDataSelectorProps) => {
                       </TableBody>
 
                   </Table>
+                  </TableContainer>
+
                 </Grid>
                 <Grid item>
                     <CopyrightComponent/>
