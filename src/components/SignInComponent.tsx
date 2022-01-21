@@ -1,4 +1,3 @@
-import { useState,useMemo, ChangeEvent,useEffect  } from 'react'; 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,7 +9,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from './CopyrightComponent';
 import Logo from './Logo';
-import { UserProp } from '../types';
+import { SignInComponentProps } from '../types';
+
+
+// Create Styles for component
 const useStyles = makeStyles((theme) =>  ({
     paper: {
       marginTop: theme.spacing(8),
@@ -32,24 +34,17 @@ const useStyles = makeStyles((theme) =>  ({
     },
   }));
 
-interface SignInComponentProps {
-  notValid:boolean;
-  user:UserProp;
-  loggedIn:any;
-  handleChangeLoad:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
-  handleChangeTrailer:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
-  handleChangeDriverName:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
-  handleLogin:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
+const SignInComponent = (props:SignInComponentProps) => {
 
-}
-const SignInComponent = ({  notValid,
-  user ,
-  loggedIn,
-  handleChangeLoad,
-  handleChangeTrailer,
-  handleChangeDriverName,
-  handleLogin
-}:SignInComponentProps) => {
+
+  const {   notValid,
+    user ,
+    loggedIn,
+    handleChangeLoad,
+    handleChangeTrailer,
+    handleChangeDriverName,
+    handleLogin
+  } = props;
     const classes = useStyles();
 
     
@@ -57,14 +52,14 @@ const SignInComponent = ({  notValid,
  
 
 
-  
+ 
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <Logo small/>
-          </Avatar>
+          </Avatar> 
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -80,7 +75,10 @@ const SignInComponent = ({  notValid,
                   type='number'
                   id="loadId"
                   label="Load ID"
-                  onChange={handleChangeLoad}
+
+                  onChange={a=>{
+                    debugger;
+                  }}
                   value={user.loadId}
                   autoFocus
                 />
@@ -97,7 +95,9 @@ const SignInComponent = ({  notValid,
                   name="trailer"
                   autoComplete="trailer"
                   value={user.trailerNumber}
-                  onChange={handleChangeTrailer}
+                  onChange={e=>{
+                    debugger;
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>

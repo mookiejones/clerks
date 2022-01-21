@@ -1,3 +1,4 @@
+import {ChangeEvent} from 'react';
 
 export type UserProp  ={
     loadId:string,
@@ -7,6 +8,16 @@ export type UserProp  ={
 }
 
 
+export interface SignInComponentProps {
+    notValid:boolean;
+    user:UserProp;
+    loggedIn:any;
+    handleChangeLoad:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
+    handleChangeTrailer:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
+    handleChangeDriverName:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
+    handleLogin:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
+  
+  }
 export type TruckDataType = {
     comment:string,
     dockID:string,

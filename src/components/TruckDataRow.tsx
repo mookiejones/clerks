@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-
+import TextField from '@material-ui/core/TextField';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Collapse from '@material-ui/core/Collapse';
@@ -35,9 +35,9 @@ interface TruckRowProp {
 
 export const TruckDataRow = ({ key, name, data,idx }: TruckRowProp) => {
     const classes = useRowStyles();
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
-    const col = idx % 2 == 0 ? "#BFBFBF":"#A4D3EE"
+    const col = idx % 2 === 0 ? "#BFBFBF":"#A4D3EE"
 
     const handleClick = () => setOpen(!open);
 
@@ -95,25 +95,31 @@ export const TruckDataRow = ({ key, name, data,idx }: TruckRowProp) => {
                                                 {truckData.routeID}
                                             </TableCell>
                                             <TableCell>
-                                                <Button variant='contained'>Cancel</Button>
+                                                <Button size="small" variant='contained'>Cancel</Button>
                                             </TableCell>
                                             <TableCell>
-                                                {truckData.timeIN === '' ? (<Button variant='contained'>Record</Button>) : truckData.timeIN}
+                                                {truckData.timeIN === '' ? (<Button size="small" variant='contained'>Record</Button>) : truckData.timeIN}
                                             </TableCell>
                                             <TableCell>
-                                                {truckData.timeOUT === '' ? (<Button variant='contained'>Record</Button>) : truckData.timeOUT}
+                                                {truckData.timeOUT === '' ? (<Button size="small" variant='contained'>Record</Button>) : truckData.timeOUT}
                                             </TableCell>
                                             <TableCell>
-                                                {truckData.trailer}
+                                                <TextField value={truckData.trailer}/>
+
                                             </TableCell>
                                             <TableCell>
-                                                0
+                                            <TextField value={0}/>
                                             </TableCell>
                                             <TableCell>
-                                                {truckData.dockID}
+                                            <TextField value={0}/>
                                             </TableCell>
                                             <TableCell>
-                                                {truckData.comment}
+                                               
+                                                <TextField value={truckData.dockID}/>
+                                            </TableCell>
+                                            <TableCell>
+                                            <TextField value={truckData.comment}/>
+                                                
                                             </TableCell>
                                             <TableCell>
                                                 {truckData.cutoff}
