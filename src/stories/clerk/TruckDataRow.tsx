@@ -1,27 +1,24 @@
 import React, { Fragment, ChangeEvent, useState } from 'react';
-import { TruckDataType } from '../types';
-
+import { TruckDataType } from '../../types';
 import {
-    Button,
+
     Table,
-    TableBody,
     TableCell,
+    TableBody,
+    TextField,
     TableHead,
     TableRow,
-    TextField,
     Collapse,
     IconButton,
-    Box
-} from '@mui/material';
-import { makeStyles } from '@mui/styles'
+    Box,
+    Typography,
+    Button
+} from '@mui/material'
 
-import {
-    KeyboardArrowUp,
-    KeyboardArrowDown
-} from '@mui/icons-material'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-
-
+ 
 
 interface TruckRowProp {
     key:string,
@@ -31,16 +28,8 @@ interface TruckRowProp {
 
 }
 
-
-const useRowStyles = makeStyles({
-    root: {
-        '& > *': {
-            borderBottom: 'unset',
-        },
-    },
-});
 export const TruckDataRow = ({ key, name, data,idx }: TruckRowProp) => {
-    const classes = useRowStyles();
+
     const [open, setOpen] = useState(false);
 
     const col = idx % 2 === 0 ? "#BFBFBF":"#A4D3EE"
@@ -49,10 +38,10 @@ export const TruckDataRow = ({ key, name, data,idx }: TruckRowProp) => {
 
     return (
         <Fragment>
-            <TableRow className={classes.root} style={{background:col}}>
+            <TableRow   sx={{background:col}}>
                 <TableCell>
                     <IconButton aria-label="expand row" size="small" onClick={handleClick}>
-                        {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
@@ -60,7 +49,7 @@ export const TruckDataRow = ({ key, name, data,idx }: TruckRowProp) => {
                 </TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}>
+                <TableCell sx={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box margin={1}>
                             <Table size="small">

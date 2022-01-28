@@ -6,7 +6,29 @@ export type UserProp  ={
     driverName:string,
     key?:string|undefined|null
 }
+export interface TruckRowProp {
+    key:string,
+    idx:number,
+    name:string,
+    data:TruckDataType[]
 
+  
+}
+
+
+export interface SignInProps {
+    isLoggedIn?:boolean;
+    onClick?:(value:LoginType)=>void
+}
+
+export interface LoginType{
+    loadId:string;
+    trailerId:string;
+    driverName:string;
+}
+export interface TruckDataGridProps {
+    data:any;
+}
 
 export interface SignInComponentProps {
     notValid:boolean;

@@ -1,141 +1,157 @@
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles'; 
-import Container from '@material-ui/core/Container';
-import Copyright from './CopyrightComponent';
+import { useState, useMemo,ChangeEvent } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import {
+    Avatar,
+    Box,
+    Button,
+    Container,
+    Stack,
+    TextField,
+Typography 
+} from '@mui/material';
+import { styled} from '@mui/material/styles';
+
+import {  } from '@mui/material/colors'
+// Need to fix this once imported
 import Logo from './Logo';
-import { SignInComponentProps } from '../types';
+import CopyrightComponent from './CopyrightComponent';
+import {  SignInProps } from '../types'
 
 
-// Create Styles for component
-const useStyles = makeStyles((theme) =>  ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    avatar: {
+
+
+const PREFIX = 'SignInComponent';
+const classes = {
+    root: `${PREFIX}-root`,
+    paper:`${PREFIX}-paper`,
+    avatar:`${PREFIX}-avatar`,
+    form:`${PREFIX}-form`,
+    submit:`${PREFIX}-submit`
+};
+
+
+
+const Root = styled('div')(({theme})=>({
+   
+    [`&.${classes.paper}`]:{
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+      [`&.${classes.avatar}`]:{
       
-      padding: theme.spacing(1),
-    backgroundColor: theme.palette.background.paper,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
+        padding: theme.spacing(1),
+      backgroundColor: theme.palette.background.paper,
+      },
+      [`&.${classes.form}`]:{
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(3),
+      },
+      [`&.${classes.submit}`]:{
+        margin: theme.spacing(3, 0, 2),
+      }
+}))
 
-const SignInComponent = (props:SignInComponentProps) => {
+ 
 
 
-  const {   notValid,
-    user ,
-    loggedIn,
-    handleChangeLoad,
-    handleChangeTrailer,
-    handleChangeDriverName,
-    handleLogin
-  } = props;
-    const classes = useStyles();
+export const SignInComponent = ({isLoggedIn,onClick  }:SignInProps) =>{
 
     
-   
- 
+    const [loadId,setLoadId] = useState('');
+    const [ trailerId,setTrailerId] = useState('');
+    const [ driverName, setDriverName]= useState('');
 
 
- 
+    const canSignIn = useMemo(()=> loadId !== '' && trailerId !== '' && driverName !== '' ,[loadId,trailerId,driverName])
+
+
+  
+
+
+
+    const handleChangeLoadId = (e:ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) =>     setLoadId(e.target.value);
+
+
+
+    const handleChangeTrailer = (e:ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => setTrailerId(e.target.value);
+
+
+    const handleChangeDriverName = (e:ChangeEvent<HTMLInputElement|HTMLTextAreaElement>)=> setDriverName(e.target.value);
+
+
+    const onLogin = () =>{
+        if(onClick!=null)
+        onClick({loadId,trailerId,driverName});
+    }
+
+
     return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <Logo small/>
-          </Avatar> 
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <form className={classes.form} noValidate>
-            <Grid container spacing={2}>
-              <Grid item xs={12} >
-                <TextField
-                  autoComplete="loadId"
-                  name="loadId"
-                  variant="outlined"
-                  fullWidth
-                  required
-                  type='number'
-                  id="loadId"
-                  label="Load ID"
+        <Root  >
+       
 
-                  onChange={a=>{
-                    debugger;
-                  }}
-                  value={user.loadId}
-                  autoFocus
-                />
-              </Grid>
-            
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="trailer"
-                  type='number'
-                  label="Trailer Number"
-                  name="trailer"
-                  autoComplete="trailer"
-                  value={user.trailerNumber}
-                  onChange={e=>{
-                    debugger;
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="driverName"
-                  label="Driver Name"
-                  type="text"
-                  id="driverName"
-                  autoComplete="driverName"
-                  value={user.driverName}
-                  onChange={handleChangeDriverName}
-                />
-              </Grid>
+        <Container maxWidth='xs' component='main'>
+            <CssBaseline />
+            <div className={classes.paper}>
+                <Avatar sx={{ bgcolor:'white', padding:1}} className={classes.avatar}>
+                    <Logo small/>
+                </Avatar>
+               <Typography >
+                   Sign In
+               </Typography>
+               <Box component='form'
+               noValidate
+               autoComplete='off'
+        >
+             
+
+               <Stack spacing={3} sx={{marginTop:3}}>
+
+                   <TextField
+                        label='Load ID'
+                        fullWidth
+                        required
+                        type='number'
+                        autoFocus
+                        defaultValue=''
+                        onChange={handleChangeLoadId}
+                   />
+
+                   <TextField
+                        label="Trailer Number"
+                        fullWidth
+                        required
+                        defaultValue=''
+                        onChange={handleChangeTrailer}
+                        />
+
+                    <TextField
+                        label="Driver Name"
+                        fullWidth
+                        required
+                        defaultValue=''
+                        onChange={handleChangeDriverName}
+                        />
+
+                    <Button 
+                        variant='contained' 
+                        color='primary'
+                        fullWidth
+                        onClick={onLogin}
+                        disabled = {!canSignIn} >Sign In</Button>
+               </Stack>
               
-            </Grid>
-            <Button
-              type="button"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              disabled={notValid}
-              onClick={handleLogin}
+               </Box>
+            </div>
+            <CopyrightComponent/>
+    
+    </Container>
+   
 
-            >
-              Sign In
-            </Button>
-            </form>
-            {`User Logged In : ${loggedIn}`}
-        </div>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-    );
-  }
+    </Root>
+)
 
-  export default SignInComponent;
+};
+
+export default SignInComponent;

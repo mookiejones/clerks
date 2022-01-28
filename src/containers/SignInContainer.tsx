@@ -4,23 +4,15 @@ import { useSignIn} from '../hooks/useSignIn'
 
 
 const SignInContainer = () => {
-    const {  notValid,
-        user ,
-        loggedIn,
-        handleChangeLoad,
-        handleChangeTrailer,
-        handleChangeDriverName,
-        handleLogin
+    const { 
+         isLoggedIn,
+         onClick  
      } = useSignIn();
 
 
-     const props = {  notValid,
-        user ,
-        loggedIn,
-        handleChangeLoad,
-        handleChangeTrailer,
-        handleChangeDriverName,
-        handleLogin
+     const props = {  
+        isLoggedIn,
+        onClick 
      } 
      return <SignInComponent {...props}/>
 }

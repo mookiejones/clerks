@@ -1,30 +1,40 @@
-import React , { Fragment } from 'react';
+import  { Fragment } from 'react';
 import LoginForm from '../components/LoginForm';
 import TitleBarComponent from '../components/TitleBarComponent';
-import Container from '@material-ui/core/Container'
+import { 
+    Container
+} from '@mui/material';
 
-import { useNorplasClerks } from '../hooks/useNorplasClerks' 
-import { makeStyles} from '@material-ui/core/styles'; 
-const useStyles = makeStyles(theme => ({
-    offset: theme.mixins.toolbar,
-  }))
+import { useNorplasClerks } from '../hooks/useNorplasClerks';
+import { styled } from '@mui/material/styles';
+
+const PREFIX = 'MainContainer';
+
+const classes = {
+    offset:`${PREFIX}-offset`
+};
+
+const Root = styled('div')(({theme})=>({
+    [`&.${classes.offset}`]:theme.mixins.toolbar
+}))
+
 const MainContainer = () => {
-    const classes = useStyles();
+  
      
     const { registerTruck } = useNorplasClerks(); 
 
     return (
-        <Fragment>
-               <TitleBarComponent/>
-             
+            <Fragment>
+                <TitleBarComponent/>
 
-               <Container maxWidth='xl'>
 
-               <div className={classes.offset}/>
-               <LoginForm onTruckChange={registerTruck}/>
-               </Container>
-
-        </Fragment>
+                <Container maxWidth='xl'>
+                    <Root>
+                        <div className={classes.offset}/>
+                    </Root>
+                    <LoginForm onTruckChange={registerTruck}/>
+                </Container>
+            </Fragment>
     )
 }
 export default MainContainer;

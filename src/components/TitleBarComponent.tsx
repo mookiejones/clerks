@@ -1,24 +1,40 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {
+    AppBar,
+    Toolbar,
+    Typography
+} from '@mui/material'
+import { makeStyles} from '@mui/styles';
+import { createTheme,ThemeProvider} from '@mui/material/styles';
+import { styled} from '@mui/material/styles';
+
 import Logo from './Logo'
-import { makeStyles} from '@material-ui/core/styles';
+
 const version = require('../../package.json').version
-const useStyles=makeStyles((theme)=>({
-    title:{flexGrow:1},
-    toolbar: {
+ 
+
+const PREFIX = 'TitleBarComponent';
+const classes = {
+    title:`${PREFIX}-title`,
+    toolbar:`${PREFIX}-toolbar`
+}
+
+const Root = styled('div')(({theme})=>({
+    [`&.${classes.title}`]:{
+        flexGrow:1
+    },
+    [`&.${classes.toolbar}`]:{
         minHeight: 128,
         alignItems: 'flex-start',
+       
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(2),
-      },
-}));
+    }
+}))
 
+const TitleBarComponent = () =>   (
+       
+    <Root>
 
-const TitleBarComponent = () => {
-    const classes = useStyles()
-
-    return (
         <AppBar position="static">
             <Toolbar className={classes.toolbar}>
             <Logo color='#FFFFFF' />
@@ -34,7 +50,10 @@ const TitleBarComponent = () => {
         
             </Toolbar>
         </AppBar>
+     
+        </Root>
+
     )
-}
+
 
 export default TitleBarComponent;

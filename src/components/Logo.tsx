@@ -1,4 +1,3 @@
-import React from 'react';
 
 // const FONT_COLOR='#dedede';
 const FONT_COLOR = '#888b8d';

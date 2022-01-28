@@ -1,12 +1,13 @@
-import { useState,useMemo, ChangeEvent,useEffect  } from 'react'; 
+import { useState,useMemo, useEffect  } from 'react'; 
 import { clerksRef } from '../firebase'
-import { UserProp} from '../types';
+import { UserProp, LoginType} from '../types';
  
 export const useSignIn = () => {
 
    
     const [loggedIn,setLoggedIn]=useState(false); 
-    const [currentKey,setCurrentKey]=useState('')
+    const [currentKey,setCurrentKey]=useState('');
+    const [isLoggedIn,setIsLoggedIn] = useState(false);
     const [user,setUser]=useState<UserProp>({
         loadId:'',
         trailerNumber:'',
@@ -42,36 +43,11 @@ export const useSignIn = () => {
 
     )
 
-    
-    const handleChangeLoad = ({ target: { value }}:ChangeEvent<HTMLInputElement>) => {
+    const onClick = async (value:LoginType) =>{
+        debugger;
+    }
 
-        const result:UserProp = { 
-            ...user,
-            loadId:value
-        }
-        setUser(result);
        
-    }
-
-
-    const handleChangeTrailer =  ({ target: { value }}:ChangeEvent<HTMLInputElement>) => {
-         
-        const result:UserProp = { 
-            ...user,
-            trailerNumber:value
-        }
-        setUser(result);
-    }
-
-
-    const handleChangeDriverName =  ({ target: { value }}:ChangeEvent<HTMLInputElement>)=> {
-        const result:UserProp = { 
-            ...user,
-            driverName:value
-        }
-        setUser(result);
-    }
- 
  
 
     const handleLogin = async () => {
@@ -86,14 +62,14 @@ export const useSignIn = () => {
     }
 
     return {
+        isLoggedIn,
         loggedIn,
         open:!loggedIn,
         handleClose:()=>{},
         notValid,
        user,
-        handleChangeLoad,
-        handleChangeTrailer,
-        handleChangeDriverName,
+       onClick,
+       
         handleLogin
     }
 }

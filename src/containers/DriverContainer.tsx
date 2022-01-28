@@ -2,27 +2,20 @@ import React from 'react';
 import { useSignIn } from '../hooks/useSignIn';
 
 import SignInComponent from '../components/SignInComponent';
-import {SignInComponentProps} from '../types'
+import {SignInProps} from '../types'
 const DriverContainer = () => {
 
+    
     const {
-        notValid,
-        user ,
-        loggedIn,
-        handleChangeLoad,
-        handleChangeTrailer,
-        handleChangeDriverName,
-        handleLogin
+        onClick,
+        isLoggedIn       
        } = useSignIn();
 
-       const props = {
-        notValid,
-        user ,
-        loggedIn,
-        handleChangeLoad,
-        handleChangeTrailer,
-        handleChangeDriverName,
-        handleLogin
+
+     
+       const props:SignInProps = {
+        isLoggedIn,
+        onClick 
       
        };
     return (<SignInComponent {...props} />)

@@ -1,6 +1,9 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import {
+  Typography,
+  Link
+} from '@mui/material'
+
+
 const CopyrightComponent = () => (
     <Typography variant="body2" color="textSecondary" align="center">
     {'Copyright © '}
