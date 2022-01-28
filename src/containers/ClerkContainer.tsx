@@ -3,6 +3,8 @@ import React,{useState,useEffect} from 'react';
 
 import ClerkComponent from '../components/ClerkComponent';
 import { TruckData } from '../types';
+import TruckDataGrid from '../components/TruckDataGrid'
+const testData = require(`../api/testData.json`)
 
 const baseData = {
     TruckDatas:[],
@@ -10,21 +12,21 @@ const baseData = {
     Dispositions:[]
 }
 const ClerkContainer = () => {
-    const [truckData,setTruckData] = useState<TruckData>(baseData)
+    const [truckData,setTruckData] = useState<TruckData>(testData)
 
     useEffect(()=>{
         const getData = async () => {
 
            const date = new Date();
             const response = await GetShippingData(date);
+         
             setTruckData(response);
         }
 
         getData();
     },[])
-
-
-    return (<ClerkComponent data={truckData}/>)
+ 
+    return (<TruckDataGrid data={truckData}/>)
 }
 
 export default ClerkContainer;

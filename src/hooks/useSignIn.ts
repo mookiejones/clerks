@@ -45,6 +45,24 @@ export const useSignIn = () => {
 
     const onClick = async (value:LoginType) =>{
         debugger;
+      
+        try{
+        const currentUser = {
+            ...value,
+            key:''
+        }
+        const response = await clerksRef.push(currentUser);
+
+        const key = response.key;
+
+      setCurrentKey(key||'');
+    }catch(e){
+        debugger;
+        console.error(e);
+        debugger;
+    }
+
+        debugger;
     }
 
        

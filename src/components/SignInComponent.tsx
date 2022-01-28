@@ -71,14 +71,14 @@ export const SignInComponent = ({isLoggedIn,onClick  }:SignInProps) =>{
 
 
 
-    const handleChangeLoadId = (e:ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) =>     setLoadId(e.target.value);
+    const handleChangeLoadId = (e:ChangeEvent<HTMLInputElement>) =>     setLoadId(e.target.value);
 
 
 
-    const handleChangeTrailer = (e:ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => setTrailerId(e.target.value);
+    const handleChangeTrailer = (e:ChangeEvent<HTMLInputElement>) => setTrailerId(e.target.value);
 
 
-    const handleChangeDriverName = (e:ChangeEvent<HTMLInputElement|HTMLTextAreaElement>)=> setDriverName(e.target.value);
+    const handleChangeDriverName = (e:ChangeEvent<HTMLInputElement>)=> setDriverName(e.target.value);
 
 
     const onLogin = () =>{
@@ -88,7 +88,7 @@ export const SignInComponent = ({isLoggedIn,onClick  }:SignInProps) =>{
 
 
     return (
-        <Root  >
+     
        
 
         <Container maxWidth='xs' component='main'>
@@ -106,7 +106,7 @@ export const SignInComponent = ({isLoggedIn,onClick  }:SignInProps) =>{
         >
              
 
-               <Stack spacing={3} sx={{marginTop:3}}>
+                <Stack spacing={3} sx={{marginTop:3}}>  
 
                    <TextField
                         label='Load ID'
@@ -140,7 +140,7 @@ export const SignInComponent = ({isLoggedIn,onClick  }:SignInProps) =>{
                         fullWidth
                         onClick={onLogin}
                         disabled = {!canSignIn} >Sign In</Button>
-               </Stack>
+                 </Stack> 
               
                </Box>
             </div>
@@ -149,7 +149,7 @@ export const SignInComponent = ({isLoggedIn,onClick  }:SignInProps) =>{
     </Container>
    
 
-    </Root>
+    
 )
 
 };
