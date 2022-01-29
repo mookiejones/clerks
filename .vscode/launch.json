@@ -7,7 +7,14 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "Launch Clerks",
+            "url": "http://localhost:3000/any",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Driver",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
         }

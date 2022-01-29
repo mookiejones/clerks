@@ -36,7 +36,7 @@ const TruckWindowData = (props:any) => {
      
             <Grid container direction='column'>
                 <Grid item>
-                Truck Window Data
+                Truck Window Datas
                 </Grid>
           
                 <Grid item>
