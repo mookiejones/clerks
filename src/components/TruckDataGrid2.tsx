@@ -1,7 +1,6 @@
 
 import { useState , useMemo} from 'react';
-import { TruckDataType, TruckRowProp,TruckDataGridProps } from '../types';
-import TruckDataRow from './TruckDataRow';
+import { TruckDataGridProps } from '../types';
 
 import { makeTime } from '../utils'
 import _ from 'lodash';
@@ -10,7 +9,6 @@ import {
     Autocomplete,
     Button,
     Container,
-    Grid,
     Table,
     TableHead,
     TableBody,
@@ -21,12 +19,7 @@ import {
     Stack
 } from '@mui/material'
  
-
-const GridRow = (o:string,i:number) =>(
-    <TableCell  key={`gridrow-${i}`}>
-        {o}
-    </TableCell>
-)
+ 
 const TruckDataGrid = (props:TruckDataGridProps) =>{
     const [selectedDate, setSelectedDate ] = useState<string>(makeTime(new Date()));
 
@@ -50,7 +43,7 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
     const options = Object.keys(grouped);
     options.unshift("All")
     const [selectedLocation,setSelectedLocation] = useState(options[0]);
-    const keys = Object.keys(grouped);
+
 
 
     const handleLocationChange = (_:any,b:any)=> setSelectedLocation(b);
@@ -60,18 +53,13 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
 
      
 
-       let truckSendToIds = result.map((o:any)=>o.order_sendto_id);
 
-
-       let instructions = specialInstructions.filter((o:any)=>truckSendToIds.includes(o.order_sendto_id));
 
 
 
        return result;
     },[truckDatas,selectedLocation]);
 
-    
-    const rowColumns = useMemo(()=> Object.keys(truckDatas[0]),[truckDatas]);
 
 
     const getIn= (data:any) => (

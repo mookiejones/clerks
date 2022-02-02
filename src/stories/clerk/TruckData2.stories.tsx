@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import TruckDataGridComponent from './TruckDataGrid'
-
+// import TruckDataGridComponent from './TruckDataGrid'
+import TruckDataGridComponent from '../../components/TruckDataGridLayout';
 const data = require('../../api/testData.json');
 
 
@@ -13,7 +13,7 @@ export default {
 
 const Template: ComponentStory<typeof TruckDataGridComponent> = (args) => <TruckDataGridComponent {...args}/>
 
-export const TruckDataGrid = Template.bind({})
-TruckDataGrid.args={
+export const TruckDataGrid2 = Template.bind({})
+TruckDataGrid2.args={
     data:data 
 }

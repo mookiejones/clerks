@@ -1,14 +1,14 @@
 import firebase from 'firebase/app'
 import "firebase/database"
 const config = {
-apiKey: process.env.REACT_APP_APIKEY,
-authDomain: process.env.REACT_APP_AUTHDOMAIN,
+apiKey: 'AIzaSyCApD6wwu3krZABiF1OmVIHDxcE7Gj8P2k',
+authDomain: 'norplas-clerks.firebaseapp.com',
 databaseURL: 'https://norplas-clerks-default-rtdb.firebaseio.com/',
-projectId: process.env.REACT_APP_PID,
-storageBucket: process.env.REACT_APP_SB,
-messagingSenderId: process.env.REACT_APP_SID,
-appId: process.env.REACT_APP_APPID,
-measurementId:process.env.REACT_APP_MID
+projectId: 'norplas-clerks',
+storageBucket: 'norplas-clerks.appspot.com',
+messagingSenderId: '992283813627',
+appId: '1:992283813627:web:517fb1ec8e53915f12f25e',
+measurementId:'1N6Z2HTQST'
 };
 firebase.initializeApp(config);
 const databaseRef = firebase.database().ref();

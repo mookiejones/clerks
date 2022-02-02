@@ -1,48 +1,34 @@
 
-import { useState ,  Fragment, useMemo} from 'react';
-import {  TruckDataGridProps, TruckDataType } from '../types'; 
+import { useState ,   useMemo} from 'react';
+import {  TruckDataGridProps, TruckDataType, Row } from '../types'; 
 import { groupBy as rowGrouper } from 'lodash';
 import { makeTime } from '../utils'
 import _ from 'lodash';
-
+import Titlebar from './Titlebar';
 import DataGrid,{Column} from 'react-data-grid'
  
 
 
 import {
-    AppBar,    
+
     Autocomplete,
 
 
     Paper,
-
-    TextField,
-    Toolbar,
-    Typography,
+    Grid,
     Stack
 } from '@mui/material'
  
+import { styled } from '@mui/material/styles';
 
+
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
   
-
-export interface Row {
-    id:number;
-    hourMinute:string;
-    asn:string;
-    carrier:string;
-    scac:string;
-    routeID:string;
-    disposition:string;
-    name:string;
-    timeIN:string;
-    timeOUT:string;
-    trailer:string;
-    shipper:string;
-    fille:string;
-    dockID:string;
-    comment:string;
-    cutoff:string;
-}
 
 
 /**
@@ -119,64 +105,38 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
 
 
     return (
-            <Fragment>
+            <Stack>
                 
-            <AppBar position='sticky' color='primary'  >
-                <Toolbar>           
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>Truck Window Data</Typography>
-                   
-                </Toolbar>
-            </AppBar>
+            <Titlebar/>
 
 
+
+
+            <Grid 
+                container
+                direction='row'
+                justifyContent='center'
+                alignItems='center'
+             >
+                <Grid item xs={6}>
+                <Item>1</Item>
+                </Grid>
+                <Grid item xs={6}>
+                <Item>2</Item>
+                    
+                </Grid>
+                <Grid item xs={12}>
+                <Item>3</Item>
+                    
+                </Grid>
+
+            </Grid>
   
-            <Paper sx={{marginTop:2, marginBottom:2}}>
-
-                        
-<Stack direction='row' spacing={3} >
-
-<TextField
-    fullWidth
-    label='Date'
-    type='datetime-local'
-    value={dateText}
-    />
 
 
-<Autocomplete
-fullWidth
-    autoHighlight
-    options={options}
-    value={selectedLocation}
-    onChange={handleLocationChange}
-    sx={{mb:2}}
-    renderInput={(params)=><TextField {...params} label='Select Location'   variant='outlined'
-    />}
 
-    />
 
-</Stack>
-</Paper>
-
-<Stack>
-
-<div className='rdg-table-container'>
-
-                <DataGrid
-                    columns={columns}
-                    rows={rows}
-                    rowKeyGetter={rowKeyGetter}
-                    groupBy={selectedOptions}
-                    rowGrouper={rowGrouper}
-                    expandedGroupIds={expandedGroupIds}
-                    onExpandedGroupIdsChange={setExpandedGroupIds}
-                    defaultColumnOptions={{ resizable: true }}
-                    className="fill-grid"
-                    />
-                    </div>
-                    </Stack>
-
-                          </Fragment>
+                          </Stack>
 
     )
 }

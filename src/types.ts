@@ -16,6 +16,27 @@ export interface TruckRowProp {
 }
 
 
+export interface Row {
+    id:number;
+    hourMinute:string;
+    asn:string;
+    carrier:string;
+    scac:string;
+    routeID:string;
+    disposition:string;
+    name:string;
+    timeIN:string;
+    timeOUT:string;
+    trailer:string;
+    shipper:string;
+    fille:string;
+    dockID:string;
+    comment:string;
+    cutoff:string;
+}
+
+
+
 export interface SignInProps {
     isLoggedIn?:boolean;
     onClick?:(value:LoginType)=>void
@@ -40,13 +61,16 @@ export interface SignInComponentProps {
     handleLogin:ChangeEvent<HTMLInputElement|HTMLTextAreaElement|undefined>;
   
   }
+
+
+
 export type TruckDataType = {
+    id:number,
     comment:string,
     dockID:string,
     routeID:string,
     scac:string,
     carrier:string,
-    id:number,
     name:string,
     order_sendto_id:number,
     fordate:string,
@@ -58,7 +82,8 @@ export type TruckDataType = {
     timeOUT:string,
     trailer:string,
     shipper:string,
-    cutoff:string
+    cutoff:string,
+    asn:string
 }
 
 
