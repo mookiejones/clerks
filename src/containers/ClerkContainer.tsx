@@ -1,25 +1,14 @@
-import React,{useState,useEffect} from 'react';
- import { GetShippingData } from '../api';
-import { TruckData } from '../types';
-import TruckDataGrid from '../components/TruckDataGrid'
-const testData = require(`../api/testData.json`)
+import React  from 'react';
+
+import TruckDataGrid from '../components/TruckDataGridBootstrap'
+import {useData} from '../hooks/useData';
  
 const ClerkContainer = () => {
-    const [truckData,setTruckData] = useState<TruckData>(testData)
 
-    useEffect(()=>{
-        const getData = async () => {
+    const { data } = useData();
 
-           const date = new Date();
-            const response = await GetShippingData(date);
-         
-            setTruckData(response);
-        }
-
-        getData();
-    },[])
  
-    return (<TruckDataGrid data={truckData}/>)
+    return (<TruckDataGrid data={data}/>)
 }
 
 export default ClerkContainer;

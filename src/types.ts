@@ -23,7 +23,7 @@ export interface Row {
     carrier:string;
     scac:string;
     routeID:string;
-    disposition:string;
+    disposition:string | Number;
     name:string;
     timeIN:string;
     timeOUT:string;
@@ -47,9 +47,7 @@ export interface LoginType{
     trailerId:string;
     driverName:string;
 }
-export interface TruckDataGridProps {
-    data:any;
-}
+
 
 export interface SignInComponentProps {
     notValid:boolean;
@@ -96,11 +94,28 @@ export type SendToType = {
     order_sendto_id:number,
     name:string
 }
+
+export type SpecialInstructionType = {
+    id:number,
+    instruction:string,
+    closed:Date|string,
+    opened:Date|string,
+    order_sendto_id:number
+}
   
+export type ClerkDataType = {
+    TruckDatas:Row[],
+    SendTos:SendToType[],
+    Dispositions:DispositionType[],
+    SpecialInstructions:SpecialInstructionType[]
+}
  
 export type TruckData = {
     TruckDatas:TruckDataType[],
     SendTos:SendToType[],
     Dispositions:DispositionType[]
+}
 
+export interface TruckDataGridProps {
+    data:ClerkDataType;
 }

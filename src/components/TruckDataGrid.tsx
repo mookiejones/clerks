@@ -1,6 +1,6 @@
 
 import { useState ,  Fragment, useMemo} from 'react';
-import {  TruckDataGridProps, TruckDataType } from '../types'; 
+import {  TruckDataGridProps, Row } from '../types'; 
 import { groupBy as rowGrouper } from 'lodash';
 import { makeTime } from '../utils'
 import _ from 'lodash';
@@ -24,27 +24,7 @@ import {
  
 
   
-
-export interface Row {
-    id:number;
-    hourMinute:string;
-    asn:string;
-    carrier:string;
-    scac:string;
-    routeID:string;
-    disposition:string;
-    name:string;
-    timeIN:string;
-    timeOUT:string;
-    trailer:string;
-    shipper:string;
-    fille:string;
-    dockID:string;
-    comment:string;
-    cutoff:string;
-}
-
-
+ 
 /**
  * Configuration ofr each row
  */
@@ -79,13 +59,9 @@ const rowKeyGetter = (row:Row) =>{
  */
 const TruckDataGrid = (props:TruckDataGridProps) =>{
 
-    const formattedData = useMemo<Row[]>(() =>props.data.TruckDatas.map((d:TruckDataType) =>({
-        ...d,
-        asn: d.asn === '0' ? 'Yes':'No', 
-        hourMinute: `${d.hour}:${d.minute}`
-    })),[props]);
+    
 
-    const rows: Row[] = formattedData;
+    const rows: Row[] = props.data.TruckDatas;
     const [selectedDate, setSelectedDate ] = useState<string>(makeTime(new Date()));
 
     /**
@@ -113,6 +89,10 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
 
     const handleLocationChange = (_:any,b:any)=> setSelectedLocation(b);
   
+    const handleDateChange = (_:any,b:any)=>{
+        debugger;
+        setSelectedDate(b);
+    }
     const [expandedGroupIds, setExpandedGroupIds] = useState<ReadonlySet<unknown>>(
         () => new Set<unknown>(['United States of America', 'United States of America__2015'])
       );
@@ -140,6 +120,7 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
     label='Date'
     type='datetime-local'
     value={dateText}
+    onChange={handleDateChange}
     />
 
 
