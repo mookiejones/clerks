@@ -1,5 +1,5 @@
 
-import { useState ,  Fragment, useMemo} from 'react';
+import { useState ,  Fragment, ChangeEvent, ChangeEventHandler} from 'react';
 import {  TruckDataGridProps, Row } from '../types'; 
 import { groupBy as rowGrouper } from 'lodash';
 import { makeTime } from '../utils'
@@ -89,7 +89,7 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
 
     const handleLocationChange = (_:any,b:any)=> setSelectedLocation(b);
   
-    const handleDateChange = (_:any,b:any)=>{
+    const handleDateChange = (a:ChangeEventHandler<HTMLInputElement>,b:ChangeEventHandler<HTMLInputElement>)=>{
         debugger;
         setSelectedDate(b);
     }
@@ -120,7 +120,7 @@ const TruckDataGrid = (props:TruckDataGridProps) =>{
     label='Date'
     type='datetime-local'
     value={dateText}
-    onChange={handleDateChange}
+     onChange={handleDateChange}
     />
 
 

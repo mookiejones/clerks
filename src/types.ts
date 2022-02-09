@@ -19,7 +19,7 @@ export interface TruckRowProp {
 export interface Row {
     id:number;
     hourMinute:string;
-    asn:string;
+    asn:string|number;
     carrier:string;
     scac:string;
     routeID:string;
@@ -29,7 +29,7 @@ export interface Row {
     timeOUT:string;
     trailer:string;
     shipper:string;
-    fille:string;
+    fill:string;
     dockID:string;
     comment:string;
     cutoff:string;
@@ -104,7 +104,7 @@ export type SpecialInstructionType = {
 }
   
 export type ClerkDataType = {
-    TruckDatas:Row[],
+    TruckDatas:Row[] | TruckDataType[],
     SendTos:SendToType[],
     Dispositions:DispositionType[],
     SpecialInstructions:SpecialInstructionType[]

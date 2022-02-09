@@ -1,0 +1,337 @@
+body
+{
+    BACKGROUND-COLOR: white
+}
+
+
+
+.headerLogo
+{
+	height: 67px;
+	width: 100px;
+}
+
+.headerTitle{
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.tdborder{
+  border: 1px;
+  border-style:solid;
+  border-color:Black;
+}
+
+.headerText{
+	font-size: 12px;
+	font-weight: bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.headerText1{
+	font-size: 9px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+
+.footerText{
+	font-size: 9px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.footerCopyright{
+	font-size: 9px;
+	color: gray;
+	font-family: Tahoma, Courier New, Arial;
+	background-color: #F5F5F5;
+}
+
+
+.bodyText{
+	font-size: 12px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+	text-align:center;
+}
+
+.bodyTextvTop{
+	font-size: 12px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+	text-align:center;
+	vertical-align:top;
+}
+
+.bodyTextL{
+	font-size: 12px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+	text-align:left;
+}
+
+.bodyTextR{
+	font-size: 12px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+	text-align:right;
+}
+
+.bodyTextT{
+	font-size: 12px;
+	color: black;
+	border-top: 1px solid black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyTextTR{
+	font-size: 12px;
+	color: black;
+	border-top: 1px solid black;
+	border-right: 1px solid black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyTextTL{
+	font-size: 12px;
+	color: black;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyTextTLR{
+	font-size: 12px;
+	color: black;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyTextBold{
+	font-size: 12px;
+	font-weight: bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+	height: 33px;
+	width: 37px;
+}
+
+.bodyText1{
+	font-size: 12px;
+	color: black;
+	background-color: #F08080;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText2{
+	font-size: 12px;
+	color: black;
+	background-color: #F08080;
+	border-left: 2px black solid;
+	cursor: hand;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText3{
+	font-size: 16px;
+	font-weight:bold;
+	text-decoration: underline;
+	color: blue;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText4{
+	font-size: 14px;
+	font-weight:bold;
+	text-decoration: underline;
+	color: green;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText5{
+	font-size: 10px;
+	font-weight:bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText6{
+	font-size: 10px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText7{
+	font-size: 12px;
+	color: green;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText8{
+	font-size: 12px;
+	color: red;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText9{
+	font-size: 14px;
+	font-weight:bold;
+	text-decoration: underline;
+	color: blue;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText10{
+	font-size: 9px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.bodyText11{
+	font-size: 16px;
+	font-weight:bold;
+	color: #FF4500;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+
+.messageText{
+	font-size: 18px;
+	font-weight:bold;
+	color: red;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+
+.fontSize1{
+	font-size: 10px;
+	font-weight:bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.fontSize2{
+	font-size: 12px;
+	font-weight:bold;
+	text-decoration: underline;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.fontSize3{
+	font-size: 14px;
+	font-weight:bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.UpdateProgress{
+	font-size: 16px;
+	font-weight:bold;
+	font-style:italic;
+	color: green;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+.fontSize4{
+	font-size: 16px;
+	font-weight:bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+.fontSize5{
+	font-size: 20px;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+.fontSize6u{
+	font-size: 22px;
+	font-weight:bold;
+	text-decoration: underline;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+.fontSize7{
+	font-size: 24px;
+	font-weight:bold;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+
+.fontSize8u{
+	font-size: 26px;
+	font-weight:bold;
+	text-decoration: underline;
+	color: black;
+	font-family: Tahoma, Courier New, Arial;
+}
+
+#level0
+{
+	background: Blue;
+}
+#level1
+{
+	margin-left: 10%;
+	padding-left: 9px;
+	background: #FFF;
+}
+#level1B
+{
+	margin-left: 20%;
+	padding-left: 9px;
+	background: #FFF;
+}
+#level2
+{
+	background: #FFF3AC;
+}
+#level3
+{
+	margin-right: 143px;
+	padding-right: 9px;
+	background: #FFF;
+}
+
+#leftcol {
+  background: #FFFAF0;
+  position: absolute;
+  top: 0px;
+  left : 0px;
+  width: 150px;
+  height: 500px;
+}
+
+#content {
+  background: #ffffff;
+  position: relative;
+  top: 25px;
+  left: 150px;
+  width: 650px;
+  height: 500px;
+}
+#content1500 {
+  background: #ffffff;
+  position: relative;
+  top: 25px;
+  left: 150px;
+  width: 1500px;
+  height: 1500px;
+}
